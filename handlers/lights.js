@@ -25,6 +25,7 @@ function getLightsStatus(data){
       state,
     }
   });
+  return result;
 }
 
 module.exports = lightsHandler;
