@@ -1,6 +1,8 @@
 const express = require('express');
 const axios = require('axios');
 
+const lightsHandler = require('./handlers/lights.js')
+
 const PORT = process.env.PORT || 3000;
 
 const app = express();
@@ -12,6 +14,7 @@ app.use(express.static('./public'));
 const username = 'C4xKRp9adziB0leesJqRFndCLFYQOH6A31OgeCsj';
 const baseURL = 'http://192.168.1.6/api';
 
+app.get('/lights', lightsHandler);
 
 app.get('/lights/:lightId/status', (req, res) => {
 	if (req.params.lightId != parseInt(req.params.lightId)) {
@@ -31,6 +34,6 @@ app.get('/lights/:lightId/status', (req, res) => {
 });
 
 app.listen(PORT, (err) => {
-  if (err) return console.error(`Error starting server on port ${PORT}:`,err);
+  if (err) return console.error(`Error starting server on port ${PORT}:`, err);
   console.log('Server Listening on port', PORT);
 });
