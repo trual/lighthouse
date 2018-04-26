@@ -14,7 +14,7 @@ app.use(express.static('./public'));
 const username = 'C4xKRp9adziB0leesJqRFndCLFYQOH6A31OgeCsj';
 const baseURL = 'http://192.168.1.6/api';
 
-app.get('/lights', lightsHandler);
+app.get('/api/lights', lightsHandler);
 
 app.get('/lights/:lightId/status', (req, res) => {
 	if (req.params.lightId != parseInt(req.params.lightId)) {
