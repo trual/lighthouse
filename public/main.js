@@ -1,7 +1,8 @@
 import {render, renderError} from './render';
-import lightsHandler from '/handlers/lights.js'
 
-fetch(lightsHandler)
+console.log('app loaded')
+
+fetch('/api/lights')
     .then(res => res.json())
     .then(render)
     .catch(renderError)

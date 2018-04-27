@@ -1,17 +1,29 @@
-const generateLights = (lights) =>
+const generateLights = (light) =>
 `
     <tr>
-      <td>${lights.name}</td>
-      <td>${lights.name.state}</td>
+      <td>${light.name}</td>
+      <td>${light.state.on}</td>
     </tr>
 `;
 
 export const render = (lights) => {
-    document.getElementById('lights-table').innerHTML = lights.map(generateLights);
+
+  let lightsTable = [];
+  const tableHeader =`
+  <tr>
+    <th>Light Name</th>
+    <th>ON</th>
+  </tr>`;
+
+  lightsTable.push(tableHeader);
+  lightsTable = lightsTable.concat(lights.map(generateLights)).join("");
+  document.getElementById('lights-table').innerHTML = lightsTable;
+
+
 }
 
 export const renderError = (err = 'Error processing request') => {
-    document.getElementById('lights-table').innerHTML = `
+    document.getElementById('results').innerHTML = `
         <div>${err}</div>
     `;
 }
